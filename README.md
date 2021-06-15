@@ -1,5 +1,7 @@
 # 使い方
 ## get-session-token.sh
+参考：https://oji-cloud.net/2020/03/19/post-4581/　　
+
 source で実行することで環境変数が .sh の外でも使えるようになる
 ```
 $ source get-session-token.sh <IAM> <MFA TOKEN>
