@@ -7,6 +7,7 @@ unset AWS_SESSION_TOKEN
 
 iam=$1
 token_code=$2
+# コンソールのユーザー名と IAM のユーザー名が違う場合は修正必要
 user_name=`whoami`
 
 echo "[INFO] IAM: $iam"
