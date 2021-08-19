@@ -5,9 +5,10 @@ export DYNAMO_ENDPOINT=http://localhost:8000
 
 # テーブル作成
 aws dynamodb create-table --table-name $TABLE_NAME \
-  --attribute-definitions '[{"AttributeName": "kintone_record_no","AttributeType": "N"}]' \
+  --attribute-definitions '[{"AttributeName": "kintone_record_no","AttributeType": "N"},{"AttributeName": "pdf_created_flag","AttributeType": "N"}]' \
   --key-schema '[{"AttributeName": "kintone_record_no","KeyType": "HASH"}]' \
   --provisioned-throughput '{"ReadCapacityUnits": 5,"WriteCapacityUnits": 5}' \
+  --global-secondary-indexes '[{"IndexName": "pdf_created_flag-index","KeySchema":[{"AttributeName":"pdf_created_flag","KeyType":"HASH"}], "ProvisionedThroughput": {"ReadCapacityUnits": 1,"WriteCapacityUnits": 1},"Projection":{"ProjectionType":"ALL"}}]' \
   --endpoint-url $DYNAMO_ENDPOINT
 
 # データ挿入
